@@ -3,13 +3,13 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 def upgrade():
-    # Добавляем индекс GIN на поле JSON
+
     op.create_index(
-        'ix_students_extra_data_gin',  # Имя индекса
-        'students',  # Таблица
-        ['extra_data'],  # Поле JSON
-        postgresql_using='gin',  # Тип индекса
-        postgresql_ops={'extra_data': 'jsonb_ops'}  # Используем GIN для jsonb
+        'ix_students_extra_data_gin',  
+        'students',  
+        ['extra_data'],  
+        postgresql_using='gin',  
+        postgresql_ops={'extra_data': 'jsonb_ops'}  
     )
 
 def downgrade():
